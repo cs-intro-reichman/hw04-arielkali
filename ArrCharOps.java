@@ -72,7 +72,7 @@ public class ArrCharOps {
      */
     public static int indexOf(char[] arr, char ch, int fromIndex) {
         
-        for (int i = fromIndex; i < arr.length; i--) {
+        for (int i = fromIndex; i < arr.length; i++) {
             if (arr[i] == ch) {
                 return i;
             }
@@ -116,7 +116,6 @@ public class ArrCharOps {
         // Replace the following statement with your code
         char[] concatanation_array = new char[endIndex - beginIndex];
         for (int i = beginIndex; i < endIndex; i++) {
-            System.out.println(i);
             concatanation_array[i - beginIndex] = arr [i];
         }
         return concatanation_array;
@@ -132,7 +131,7 @@ public class ArrCharOps {
     public static long hashCode(char[] arr) {
        int hash = 0;
        for (int i = 0; i < arr.length; i++) {
-           hash = arr[i]*7^(arr.length-1-i); 
+           hash = hash + arr[i]*(int)(Math.pow(7, (arr.length - 1 - i)));
        }
         return hash;
     }
@@ -166,6 +165,9 @@ public class ArrCharOps {
         int shorter = Math.min(str1.length(), str2.length());
         boolean found = false;
         int i = 0;
+        if (str1 == "" || str2 == "") {
+            return -2;
+        }
         while (found == false ) {
 
             if (i == shorter) {
@@ -182,10 +184,10 @@ public class ArrCharOps {
             else if (str1.charAt(i) == str2.charAt(i)) {
                 i++;
             } else {
-                if (str1.charAt(i) > str2.charAt(i)) {
-                    return -1;
-                } else {
+                if ((int)str1.charAt(i) > (int)str2.charAt(i)) {
                     return 1;
+                } else {
+                    return -1;
                 }
             }
         }
