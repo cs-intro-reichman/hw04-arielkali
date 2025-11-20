@@ -13,23 +13,21 @@ public class Primes {
                     arr[i] = false;
                 }
                 i++;
-            }
+            } 
             p++;
-            while (arr[p] == false) {
-                p++;
-            }
+            i = p+1;
         }
 
         System.out.println("Prime numbers up to " +largestNum+":");
         int count_prime = 0;
         for (int j = 0; j < arr.length; j++) {
             if (arr[j]) {
-                System.out.println(arr[j]);
+                System.out.println(j);
                 count_prime++;
             }
         }
 
-        double percentage = ((double) count_prime / (double) largestNum) * 100;
+        int percentage = (int)(((double) count_prime / (double) largestNum) * 100);
         System.out.println("There are "+ count_prime +" primes between 2 and "+ largestNum +" ("+ percentage +"% are primes)");
     }
 }
